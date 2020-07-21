@@ -110,12 +110,12 @@
       {% endfor %}
     </div>
     
-        <a href="{% url 'add new item' %}" class="float">
+        <a href="{% url 'add new item' %}" class="float" id="social-float">
       <i class="fa fa-plus my-float"></i>
     </a>
     </div>
     
-<div class="footer-dark" style="color: rgb(254,255,255);background-color: rgb(0,0,0);">
+<div class="footer-dark" id="footer" style="color: rgb(254,255,255);background-color: rgb(0,0,0);">
         <footer>
             <div class="container">
                 <div class="row">
@@ -148,7 +148,12 @@
     </div>
     <script src="{% static "assets/js/jquery.min.js"%}"></script>
     <script src="{% static "assets/js/bootstrap.min.js"%}"></script>
+    <script>
+    $(window).scroll(function() {
+	  $("#social-float").css("bottom", Math.max(40, 250 - ($(document).height() - $(window).scrollTop() - $(window).height())));
+});
 
+    </script>
 
   </body>
 </html>
