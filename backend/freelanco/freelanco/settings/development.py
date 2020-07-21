@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1','0.0.0.0']
 
 INSTALLED_APPS +=[
         'debug_toolbar',
@@ -38,3 +38,6 @@ DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False,
     'SHOW_TOOLBAR_CALLBACK': show_toolbar
 }
+
+#client_id=27002450847-jposhfmk76db203osbpshhulminfk052.apps.googleusercontent.com
+#secret_key=Bf0E_PPadIggLWfTFQ5PacCF

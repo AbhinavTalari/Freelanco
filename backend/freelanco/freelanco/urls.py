@@ -1,14 +1,20 @@
 from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
-
-from .views import gettingStarted
+from django.views.generic import TemplateView
+from .views import gettingStarted,display404
 
 urlpatterns = [
+	path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
-	path('', gettingStarted, name='gettingStarted'),
+	path('', TemplateView.as_view(template_name="home/home.html"),name='home'),
+	path('home/', include('product.urls')),
 	path('accounts/',include('users.urls')),
-]
+	path('accounts/',include('allauth.urls')),
+	path('notfound',display404),
+ 
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
 	import debug_toolbar

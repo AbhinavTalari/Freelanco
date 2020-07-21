@@ -1,0 +1,27 @@
+{% load material_form %}
+<html>
+    <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
+        {% include 'material/includes/material_css.html' %}
+{% include 'material/includes/material_js.html' %}
+    </head>
+    <body>
+<div class="row">
+        <div class="col l6 offset-l3">
+        <div class="card-panel white lighten-5 z-depth-1 center-align">
+        <div data-tap-disabled="true">
+<form method="POST">
+            {% csrf_token %}
+            {% form form=form %}{% endform %}
+            {% if form_profile %}
+            {% form form=form_profile%}{% endform %}
+            {% endif %}
+            <button class="btn waves-effect waves-green green" type="submit" name="_submit" class="btn" style="border-radius: 25px;">Submit</button>
+        </form>
+</div>
+        </div>
+        </div>
+        </div>
+        
+    </body>
+</html>
