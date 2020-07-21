@@ -55,7 +55,8 @@
                 
         </div>
     </nav>
-    <div class="foot" style="min-height: calc(100vh - 210.3px);">
+    {% if items %}
+    <div class="foot" style="min-height: calc(100vh - 215.3px);">
     <div class="container" style="overflow:auto; padding-bottom:50px">
     {% for item in items %}
       <section class="about-me" id="about">
@@ -110,11 +111,21 @@
       {% endfor %}
     </div>
     
-        <a href="{% url 'add new item' %}" class="float" id="social-float">
-      <i class="fa fa-plus my-float"></i>
-    </a>
+       
     </div>
+    {% else %}
     
+    <h3 style="text-align: center; font-weight: bold; font-family: 'Poppins',sans-serif;margin-top:190px;">Your Service list is empty</h3>
+			<h4 style="text-align: center; font-weight: 200; font-family: 'Poppins',sans-serif;">Looks like you haven't added</h4>
+			<h4 style="text-align: center;font-weight: 200; font-family: 'Poppins',sans-serif;margin-bottom:190px;">any service yet :(</h4>
+			<br>
+      <br>
+    
+      {% endif %}
+
+      <a href="{% url 'add new item' %}" class="float" id="social-float">
+        <i class="fa fa-plus my-float"></i>
+      </a>
 <div class="footer-dark" id="footer" style="color: rgb(254,255,255);background-color: rgb(0,0,0);">
         <footer>
             <div class="container">
