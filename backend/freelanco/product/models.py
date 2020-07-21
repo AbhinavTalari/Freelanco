@@ -10,6 +10,7 @@ class Item(models.Model):
 	provider = models.ForeignKey(FreelancerProfile, on_delete = models.CASCADE,related_name="items")
 	post_date = models.DateField(null=True,blank=True,auto_now_add=True)
 	picture = models.ImageField(default = 'items/default.jpg', upload_to = 'items/uploads')
+	active=models.BooleanField(default=True)
 
 	CATEGORY_LIST =[
 		('MASSAGE', 'Massage'),

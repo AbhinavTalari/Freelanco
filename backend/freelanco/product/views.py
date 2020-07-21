@@ -21,9 +21,9 @@ enum_stat=["Ongoing","Done","Not Started"]
 def item_list(request):
 	name_filter=request.GET.get('search', '')
 	if name_filter:
-		items=Item.objects.filter(Q(title__icontains=name_filter) | Q(description__icontains=name_filter))
+		items=Item.objects.filter(Q(title__icontains=name_filter) | Q(description__icontains=name_filter)).exclude(active=False)
 	else:
-		items=Item.objects.all()
+		items=Item.objects.all().exclude(active=False)
 	if items.exists():
 		context = {
 			'items': items,
@@ -34,6 +34,30 @@ def item_list(request):
 			'items_exist': False
 		}
 	return render(request, "services_temp/service_providers.html", context)
+
+def activate_item(request,pk):
+	item = get_object_or_404(Item, pk=pk)
+	item.active=True
+	item.save()
+	return redirect('service_list')
+
+def deactivate_item(request,pk):
+	item = get_object_or_404(Item, pk=pk)
+	item.active=False
+	item.save()
+	"""
+	orders_objects=Order.objects.filter(items_=item,ordered=False).all()
+	if order_objects.exists():
+		for order in order_objects:
+			order.items.remove(item)
+			if order.items.count()==0:
+				order.delete()
+			else:
+				order.save()
+	"""
+	return redirect('service_list')
+	
+
 
 @login_required
 @only_customer
