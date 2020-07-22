@@ -340,16 +340,16 @@ def edit_item(request, pk):
 	The user is supposed to be logged and should be a freelancer, else throw a 403 Forbidden error
 	Parameters: Primary key of the Item
 	"""
-    if request.method=='POST':
-        form=ItemEditForm(request.POST,request.FILES,instance=Item.objects.filter(pk = pk)[0])
+	if request.method=='POST':
+		form=ItemEditForm(request.POST,request.FILES,instance=Item.objects.filter(pk = pk)[0])
         #print(form)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse("service_list"))
-    else:
-        form3=ItemEditForm(instance=Item.objects.filter(pk = pk)[0])
-        context={"form":form3}
-        return render(request,'account/add_item.html',context)
+		if	form.is_valid():
+			form.save()
+			return HttpResponseRedirect(reverse("service_list"))
+	else:
+		form3=ItemEditForm(instance=Item.objects.filter(pk = pk)[0])
+		context={"form":form3}
+		return render(request,'account/add_item.html',context)
 
 @login_required
 @only_freelancer
@@ -359,18 +359,17 @@ def add_item(request):
 	The user is supposed to be logged and should be a freelancer, else throw a 403 Forbidden error
 	Parameters: Primary key of the Item
 	"""
-    if request.method=='POST':
-        form=ItemEditForm(request.POST,request.FILES)
-        if form.is_valid():
-            item = form.save(commit = False)
-            item.provider = request.user.freelancer_profile
-            item.save()
-            return HttpResponseRedirect(reverse("service_list"))
-    else:
-        form3=ItemEditForm()
-        context={"form":form3}
-        return render(request,'account/add_item.html',context)
-
+	if request.method=='POST':
+		form=ItemEditForm(request.POST,request.FILES)
+		if form.is_valid():
+			item = form.save(commit = False)
+			item.provider = request.user.freelancer_profile
+			item.save()
+			return HttpResponseRedirect(reverse("service_list"))
+	else:
+		form3=ItemEditForm()
+		context={"form":form3}
+		return render(request,'account/add_item.html',context)
 @login_required
 @only_freelancer
 def delete_item(request, pk):
@@ -379,10 +378,10 @@ def delete_item(request, pk):
 	The user is supposed to be logged and should be a freelancer, else throw a 403 Forbidden error
 	Parameters: Primary key of the Item
 	"""
-    item=Item.objects.get(pk = pk)
-    if request.method=='POST':
-        item.delete()
-        return HttpResponseRedirect(reverse("service_list"))
+	item=Item.objects.get(pk = pk)
+	if request.method=='POST':
+		item.delete()
+		return HttpResponseRedirect(reverse("service_list"))
 
 
 @login_required
