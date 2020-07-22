@@ -1,0 +1,330 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Contact Us</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/main.css' %}"/>
+
+  <link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.css' %}" media="screen,projection" />   
+  <link rel="stylesheet" href="{%static "css/styles.css"%}">
+  
+ 
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,900&display=swap');
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+.container{
+	max-width: 1140px;
+	margin: auto;
+}
+.row{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.section-title{
+	flex: 0 0 100%;
+	max-width:100%;
+	margin-bottom: 40px;
+	
+}
+.section-title h1{
+	display: inline-block;
+	font-size: 35px;
+	text-transform: uppercase;
+	font-weight: 700;
+	color: #000000;
+	margin: 0 0 10px;
+	position: relative;
+
+}
+.section-title h1:before{
+	  content: '';
+	  left: 0;
+	  position: absolute;
+	  height: 2px;
+	  right: 30%;
+	  background-color: #4caf50;
+	  bottom: 0px;
+}
+.text-center{
+	text-align: center!important;
+}
+.text-left{
+	text-align: left!important;
+}
+.text-right{
+	text-align: right!important;
+}
+
+body{
+	margin:0; 
+	font-family:'Poppins',sans-serif; 
+}
+section{
+	box-sizing:border-box; 
+	margin: 0;
+}
+.contact-us{
+	padding: 100px 15px;
+	background-color: #f5f8fd
+}
+.contact-us .section-title h1:before{
+	left:30%;
+}
+.contact-us .contact-form{
+	background-color: #ffffff;
+	flex: 0 0 100%;
+	max-width: 100%;
+	padding: 50px;
+	border: 1px solid #eeeeee; 
+}
+.contact-us .contact-form .text{
+	flex: 0 0 100%;
+	max-width: 100%;
+	padding-bottom: 20px;
+}
+.contact-us .contact-form .text h2{
+	font-size: 26px;
+	font-weight: 600;
+	color: #000000;
+	margin:0;
+	padding-bottom: 0;
+}
+
+.contact-us .contact-form .text p{
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 24px;
+	color: #838383;
+	margin: 0px;
+}
+.contact-us .contact-form .space-between{
+	justify-content: space-between;
+}
+.contact-us .contact-form .col-6{
+	flex: 0 0 calc(50% - 15px);
+	max-width:calc(50% - 15px);
+}
+.contact-us .contact-form .col-12{
+	flex: 0 0 100%;
+	max-width: 100%;
+}
+.contact-us .contact-form .form-control{
+	height: 45px;
+	width: 100%;
+	margin-bottom: 15px;
+	border: 1px solid #b3b3b3;
+	padding: 6px 12px;
+	font-size: 12px;
+	font-weight: 400;
+	font-family: 'Poppins',sans-serif;
+}
+.contact-us .contact-form textarea.form-control{
+	height: 140px;
+}
+.contact-us .contact-form .form-control::placeholder{
+	color: #838383;
+}
+.contact-us .contact-form .button{
+
+	flex: 0 0 100%;
+	max-width: 100%;
+
+}
+.contact-us .contact-form .button a{
+	border-radius: 4px;
+	color: #ffffff;
+	 padding:12px 25px;
+	 text-decoration: none;
+	 font-size: 14px;
+	 text-transform: uppercase;
+	 font-weight: 600;
+	 transition: all .5s ease;
+	 background-color: #4caf50;
+	 box-shadow: 0px 10px 15px #e8e8e8;
+}
+.contact-us .contact-form .button a:hover{
+	background-color: #000000;
+	color: #ffffff;
+}
+
+</style>
+<body>
+ 
+    <div class="navigationbar">
+        <ul>
+          <li>
+            <a class="active" href="{% url 'home' %}" style="font-family: 'Kaushan Script', cursive;">
+              Freelanco
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'contactus' %}">Contact Us</a>
+          </li>
+          <li>
+            {% if user.is_authenticated %}
+            <a href="{% url 'item list' %}">Get Started?</a>
+            {% else %}
+            <a href="{% url 'users:login' %}">Get Started?</a>
+            {% endif %}
+          </li>
+          <li>
+          <a href="{% url 'item list' %}">Services</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li>
+            <a class="log" href="{% url 'users:logout' %}">Logout</a>
+          </li>
+           <li>
+            <a class="log" href="{% url 'users:profile_view' %}">Profile</a>
+          </li>
+          {% else %}
+          <li>
+            <a class="log" href="{% url 'users:login' %}">Login</a>
+          </li>
+           <li>
+            <a  href="{% url 'users:customer_signup' %}">Signup as a customer</a>
+          </li>
+          <li>
+          <a href="{% url 'users:freelancer_signup' %}">Signup as a freelancer</a>
+          </li> 
+          {% endif %}
+        </ul>
+      </div>
+<section class="contact-us" id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="section-title text-center">
+        <h1>Get In Touch</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="contact-form">
+        <div class="row">
+          <div class="text">
+            <h2>Drop Us a line</h2>
+            <p>We are here to answer any Question you may ask</p>
+          </div>
+        </div>
+        <div class="row space-between">
+          <div class="col-6">
+            <input type="text" class="form-control" name="" placeholder="Name">
+          </div>
+          <div class="col-6">
+            <input type="text" class="form-control" name="" placeholder="Email">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <textarea class="form-control" placeholder="Your Comment"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="button text-right">
+            <a href="">Get In Touch</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div style= "
+background-color: black;
+color: white;
+a{
+  color: black;
+  text-decoration: none;
+}">
+<footer class="page-footer black" >
+<div class="container" style="">
+  <div class="row">
+    <div class="col l6 s12">
+      <h5 class="green-text" style="font-family:'Lobster',cursive;">Freelanco</h5>
+      <p  style="color: whitesmoke"   class="white-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+
+
+    </div>
+    
+    <div class="col l3 s12 " style="align-items: center;">
+      <h5 style="font-family: 'Poppins'" class="white-text">Reach Us</h5>
+      <div style="display: block;">
+       
+        <p style="color: white;"><span> Freelanco HeadQuarters,</span> Chennai, India</p>
+        <i class="fa fa-map-marker" style="float: inline-end;"></i>
+    </div>
+  
+
+    <div style="color: white; display:none;">
+    
+    <p style="color: white;">  021-5531-4224
+      
+    <i class="fa fa-phone" style="float: right;">
+      </i>
+    </p>
+  </br>
+       
+      
+    </div>
+  </br>
+    <div>
+       
+        <p><a href="#"> help@freelanco.com</a></p>
+        <i class="fa fa-envelope" style="float: inline-end ;"></i>
+    </div>
+    </div>
+    <div class="col l3 s12">
+      <h1 style="font-family:'Lobster'">Freelanco</h5>
+      <p class="menu" class="style" style="color: white; 
+      a:hover 
+      {
+        color: white;
+        font-weight: bold;
+      }
+      a{
+        color: white;
+        text-decoration: none;
+      }
+      a:active{
+        color: white;
+        text-decoration: none;
+      }
+      a:any-link{
+        color: white;
+        text-decoration: none;
+      }
+      a:visited{
+        color: white;
+        text-decoration: none;
+      }
+      
+      ">
+        <a href="#"> Home</a> |
+        <a href="#"> About</a> |
+        <a href="{% url 'item list' %}"> Services</a> |
+        <a href="#"> Portfolio</a> |
+        <a href="#"> News</a> |
+        <a href="#"> Contact</a>
+    </p>
+    </div>
+  </div>
+</div>
+
+</footer>
+
+</div>
+
+
+</body>
+</html>

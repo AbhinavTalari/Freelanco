@@ -12,6 +12,7 @@ urlpatterns = [
 	path('home/', include('product.urls')),
 	path('accounts/',include('users.urls')),
 	path('accounts/',include('allauth.urls')),
+	path('contactus/',TemplateView.as_view(template_name="home/contactus.html"),name='contactus'),
 	path('notfound',display404),
  
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

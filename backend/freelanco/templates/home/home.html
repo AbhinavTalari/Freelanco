@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Freelanco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/main.css' %}" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/main.css' %}"/>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Poppins&display=swap"
@@ -108,6 +108,8 @@ a:link {color: white;}
 a:active {color: white;}
 a:hover{color: white;}
 a{color: white;}
+
+
 </style>
         
   
@@ -125,10 +127,7 @@ a{color: white;}
           </a>
         </li>
         <li>
-          <a href="#news">News</a>
-        </li>
-        <li>
-          <a href="#contact">Contact</a>
+          <a href="{% url 'contactus' %}">Contact Us</a>
         </li>
         <li>
           {% if user.is_authenticated %}
