@@ -134,7 +134,24 @@
           <!--end card-->
       </div>
       </section>
-     
+      <script>
+      
+        var modal = document.getElementById("myModal {{item.id}}");
+        var btn = document.getElementsByName("btn {{item.id}}")[0];
+        var span = document.getElementsByClassName("close {{item.id}}")[0];
+        btn.onclick = function() {
+          modal.style.display = "block";
+        }
+        
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+        </script>
 
       {% endfor %}
   </div>
@@ -181,23 +198,6 @@
             </div>
         </footer>
       </div>
-      <script>
-      
-        var modal = document.getElementById("myModal {{item.id}}");
-        var btn = document.getElementsByName("btn {{item.id}}")[0];
-        var span = document.getElementsByClassName("close {{item.id}}")[0];
-        btn.onclick = function() {
-          modal.style.display = "block";
-        }
-        
-        span.onclick = function() {
-          modal.style.display = "none";
-        }
-        window.onclick = function(event) {
-          if (event.target == modal) {
-            modal.style.display = "none";
-          }
-        }
-        </script>
+     
   </body>
 </html>
